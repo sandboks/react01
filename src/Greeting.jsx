@@ -1,16 +1,27 @@
 function ListItem(props) {
     return <li>{props.animal}</li>
-  }
+}
   
-  function List(props) {
+function List(props) {
     return (
-      <ul>
+        <ul>
         {props.animals.map((animal) => {
-          return <ListItem key={animal} animal={animal} />;
+            return <ListItem key={animal} animal={animal} />;
         })}
-      </ul>
+        </ul>
     );
-  }
+}
+
+function ListOfThingsThatStartWith(props) {
+    return (
+        <ul>
+            {props.animals.map((animal) => {
+                //return animal.startsWith(props.c) ? <li key={animal}>{animal}</li> : null;
+                return animal.startsWith(props.c) && <li key={animal}>{animal}</li>;
+            })}
+        </ul>
+    );
+}
 
 function Greeting() {
     const animals = ["Lion", "Cow", "Snake", "Lizard"];
@@ -39,7 +50,7 @@ function Greeting() {
 
             <div>
                 <h1>Animals: </h1>
-                <List animals={animals} />
+                <ListOfThingsThatStartWith animals={animals} c={"L"} />
             </div>
 
         </>
